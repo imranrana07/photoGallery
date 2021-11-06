@@ -1,18 +1,15 @@
-package com.qcoom.photogallery.utils
+package com.imran.photogallery.utils
 
 import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.os.Build
-import com.qcoom.photogallery.data.api.RetrofitClient
-import com.qcoom.photogallery.data.api.ApiCall
+import com.imran.photogallery.data.api.RetrofitClient
+import com.imran.photogallery.data.api.ApiCall
 import okhttp3.Interceptor
 import okhttp3.Request
 import okhttp3.logging.HttpLoggingInterceptor
 import java.io.IOException
-
-//const val BASE_URL = "https://api.eduworlderp.com"
-const val BASE_URL = "https://api.eduexpert24.com"
 
 val interceptor: Interceptor = Interceptor { chain ->
 

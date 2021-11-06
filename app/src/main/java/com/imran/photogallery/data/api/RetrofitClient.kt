@@ -1,8 +1,8 @@
-package com.qcoom.photogallery.data.api
+package com.imran.photogallery.data.api
 
-import com.qcoom.photogallery.utils.BASE_URL
-import com.qcoom.photogallery.utils.logger
+import com.imran.photogallery.utils.logger
 import com.google.gson.GsonBuilder
+import com.qcoom.photogallery.BuildConfig.BASE_URL
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory

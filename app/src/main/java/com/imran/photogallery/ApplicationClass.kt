@@ -1,8 +1,10 @@
-package com.qcoom.photogallery
+package com.imran.photogallery
 
 import android.app.Application
 import android.content.Context
+import dagger.hilt.android.HiltAndroidApp
 
+@HiltAndroidApp
 class ApplicationClass: Application() {
     companion object{
         var appContext: Context? = null

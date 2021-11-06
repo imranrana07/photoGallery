@@ -1,4 +1,4 @@
-package com.qcoom.photogallery.ui.home
+package com.imran.photogallery.ui.home
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

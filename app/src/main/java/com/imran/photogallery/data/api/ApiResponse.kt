@@ -1,8 +1,8 @@
-package com.qcoom.photogallery.data.api
+package com.imran.photogallery.data.api
 
-import com.qcoom.photogallery.ApplicationClass
-import com.qcoom.photogallery.utils.ApiException
-import com.qcoom.photogallery.utils.isInternetAvailable
+import com.imran.photogallery.ApplicationClass
+import com.imran.photogallery.utils.ApiException
+import com.imran.photogallery.utils.isInternetAvailable
 import org.json.JSONObject
 import retrofit2.Response
 import java.io.IOException

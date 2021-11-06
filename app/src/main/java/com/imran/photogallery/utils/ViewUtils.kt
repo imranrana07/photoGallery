@@ -1,4 +1,4 @@
-package com.qcoom.photogallery.utils
+package com.imran.photogallery.utils
 
 import android.content.Context
 import android.widget.Toast
