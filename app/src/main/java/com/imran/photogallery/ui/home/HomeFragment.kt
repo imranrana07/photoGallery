@@ -1,19 +1,24 @@
 package com.imran.photogallery.ui.home
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.GridLayoutManager
 import com.imran.photogallery.core.ClickListener
 import com.imran.photogallery.data.model.Photos
 import com.imran.photogallery.ui.home.adapter.PhotoAdapter
+import com.imran.photogallery.utils.BUNDLE_VALUE
 import com.imran.photogallery.utils.GONE
 import com.imran.photogallery.utils.VISIBLE
+import com.imran.photogallery.utils.toast
 import com.qcoom.photogallery.BuildConfig.ACCESS_KEY
 import com.qcoom.photogallery.R
 import com.qcoom.photogallery.databinding.FragmentHomeBinding
@@ -49,7 +54,10 @@ class HomeFragment : Fragment(),ClickListener<Photos> {
             if (it.refresh is LoadState.Loading){
                 binding.shimmer.itemShimmer.visibility = VISIBLE
                 binding.shimmer.itemShimmer.startShimmerAnimation()
-            }else{
+            }else {
+                if (it.refresh is LoadState.Error){
+                    toast((it.refresh as LoadState.Error).error.localizedMessage!!)
+                }
                 binding.shimmer.itemShimmer.stopShimmerAnimation()
                 binding.shimmer.itemShimmer.visibility = GONE
             }
@@ -64,8 +72,7 @@ class HomeFragment : Fragment(),ClickListener<Photos> {
     }
 
     override fun clickedData(data: Photos) {
-
+        val bundle = bundleOf(BUNDLE_VALUE to data.urls.regular)
+        findNavController().navigate(R.id.singlePhotoFragment,bundle)
     }
-
-
 }

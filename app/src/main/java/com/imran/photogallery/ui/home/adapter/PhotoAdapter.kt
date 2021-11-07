@@ -19,14 +19,13 @@ class PhotoAdapter(private val clickedItem: ClickListener<Photos>):PagingDataAda
     override fun onBindViewHolder(holder: PhotosViewHolder, position: Int) {
         val photos = getItem(position) as Photos
         Glide.with(context).load(photos.urls.regular).placeholder(R.drawable.error).into(holder.ivPhoto)
-        
-//        holder.itemCLick(photos)
+        holder.itemCLick(photos)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PhotosViewHolder {
         context = parent.context
         val view = ItemPhotoBinding.inflate(LayoutInflater.from(context),parent,false)
-        return PhotosViewHolder(view)
+        return PhotosViewHolder(view,clickedItem)
     }
 
     object DiffUtils: DiffUtil.ItemCallback<Photos>(){

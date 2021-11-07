@@ -12,3 +12,4 @@ const val VISIBLE = View.VISIBLE // View.VISIBLE
 const val GONE = View.GONE // View.GONE
 const val INVISIBLE = View.INVISIBLE // View.GONE
 const val TIME_OUT:Long = 10000
+const val BUNDLE_VALUE = "BundleValue"

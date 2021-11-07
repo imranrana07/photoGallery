@@ -10,4 +10,11 @@
         android:name="com.imran.photogallery.ui.home.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" />
+    <fragment
+        android:id="@+id/singlePhotoFragment"
+        android:name="com.imran.photogallery.ui.single_photo.SinglePhotoFragment"
+        android:label="fragment_single_photo"
+        tools:layout="@layout/fragment_single_photo" />
+
+
 </navigation>
