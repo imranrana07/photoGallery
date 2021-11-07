@@ -4,8 +4,6 @@ import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.os.Build
-import com.imran.photogallery.data.api.RetrofitClient
-import com.imran.photogallery.data.api.ApiCall
 import okhttp3.Interceptor
 import okhttp3.Request
 import okhttp3.logging.HttpLoggingInterceptor
@@ -53,5 +51,3 @@ fun isInternetAvailable(context: Context): Boolean {
     }
     return result
 }
-// api call initialization
-val apiCall = RetrofitClient.retrofit?.create(ApiCall::class.java)
