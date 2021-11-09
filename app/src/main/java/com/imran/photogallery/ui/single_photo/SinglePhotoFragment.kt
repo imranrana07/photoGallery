@@ -13,23 +13,15 @@ import com.qcoom.photogallery.databinding.FragmentSinglePhotoBinding
 
 
 class SinglePhotoFragment : Fragment() {
-//    private lateinit var binding: FragmentSinglePhotoBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View{
-//        binding = FragmentSinglePhotoBinding.inflate(LayoutInflater.from(requireContext()),container,false)
         val binding = FragmentSinglePhotoBinding.inflate(layoutInflater,container,false)
         val photoUrl = arguments?.getString(BUNDLE_VALUE)
         binding.imageUrl = photoUrl
         return binding.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-//        Glide.with(requireContext()).load(photoUrl).error(R.drawable.error).into(binding.)
     }
 
 }

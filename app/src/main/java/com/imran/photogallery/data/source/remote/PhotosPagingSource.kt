@@ -24,8 +24,7 @@ class PhotosPagingSource @Inject constructor(private val apiCall: ApiCall,privat
             LoadResult.Page(
                 data = response!!,
                 prevKey = if(nextPage>1) nextPage-1 else null,
-                nextKey = nextPage+1
-                // as no clear pagination idea there that is why static as site contains huge page volume
+                nextKey = nextPage+1 // as no clear pagination idea information there, that is why static as site contains huge page volume
             )
         }catch (e: ApiException){
             LoadResult.Error(e)

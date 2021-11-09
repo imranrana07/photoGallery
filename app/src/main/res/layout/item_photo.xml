@@ -15,4 +15,26 @@
         android:layout_marginEnd="@dimen/dp_16"
         android:layout_marginBottom="@dimen/dp_10" />
 
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/btnDownload"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@id/ivPhoto"
+        app:layout_constraintBottom_toBottomOf="@id/ivPhoto"
+        android:layout_margin="@dimen/dp_10"
+        android:padding="@dimen/dp_5"
+        android:src="@drawable/download"
+        android:background="?attr/selectableItemBackground"/>
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/btnShare"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toStartOf="@id/btnDownload"
+        app:layout_constraintBottom_toBottomOf="@id/ivPhoto"
+        android:layout_margin="@dimen/dp_10"
+        android:padding="@dimen/dp_5"
+        android:src="@drawable/share"
+        android:background="?attr/selectableItemBackground"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

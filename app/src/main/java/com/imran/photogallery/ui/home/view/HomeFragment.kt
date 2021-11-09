@@ -1,34 +1,52 @@
-package com.imran.photogallery.ui.home
+package com.imran.photogallery.ui.home.view
 
+import android.content.Intent
+import android.graphics.Bitmap
+import android.net.Uri
 import android.os.Bundle
-import android.util.Log
+import android.os.Environment
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.GridLayoutManager
 import com.imran.photogallery.core.ClickListener
 import com.imran.photogallery.data.model.Photos
+import com.imran.photogallery.ui.home.viewmodel.HomeViewModel
 import com.imran.photogallery.ui.home.adapter.PhotoAdapter
-import com.imran.photogallery.utils.BUNDLE_VALUE
-import com.imran.photogallery.utils.GONE
-import com.imran.photogallery.utils.VISIBLE
-import com.imran.photogallery.utils.toast
 import com.qcoom.photogallery.BuildConfig.ACCESS_KEY
 import com.qcoom.photogallery.R
 import com.qcoom.photogallery.databinding.FragmentHomeBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.launch
+import java.io.File
+import java.io.FileOutputStream
+import java.io.IOException
+import java.io.OutputStream
+import java.lang.Exception
+import java.util.*
+import android.graphics.BitmapFactory
+import androidx.core.content.ContextCompat
+import com.imran.photogallery.data.model.PassData
+import com.imran.photogallery.utils.*
+import kotlinx.coroutines.*
+import retrofit2.http.Url
+import java.net.URL
+import android.app.DownloadManager
+import android.content.Context
+import android.content.ContextWrapper
+
+import androidx.core.content.ContextCompat.getSystemService
+import androidx.core.os.EnvironmentCompat
+
 
 @AndroidEntryPoint
-class HomeFragment : Fragment(),ClickListener<Photos> {
+class HomeFragment : Fragment(),ClickListener<PassData<Photos>> {
     private lateinit var binding: FragmentHomeBinding
     private val viewModel: HomeViewModel by viewModels()
 
@@ -72,8 +90,34 @@ class HomeFragment : Fragment(),ClickListener<Photos> {
 
     }
 
-    override fun clickedData(data: Photos) {
-        val bundle = bundleOf(BUNDLE_VALUE to data.urls.regular)
-        findNavController().navigate(R.id.singlePhotoFragment,bundle)
+    override fun clickedData(data: PassData<Photos>) {
+        val imageUrl = data.item.urls.regular
+        when (data.btn) {
+            PHOTO_DETAILS -> {
+                val bundle = bundleOf(BUNDLE_VALUE to imageUrl)
+                findNavController().navigate(R.id.singlePhotoFragment, bundle)
+            }
+            SHARE_PHOTO -> sharePhoto(imageUrl)
+            else -> { // save image
+                saveImage(imageUrl)
+            }
+        }
     }
+
+    private fun sharePhoto(uri: String){
+        val imageUrl = URL(uri)
+        val shareIntent: Intent = Intent().apply {
+            action = Intent.ACTION_SEND
+            putExtra(Intent.EXTRA_STREAM, imageUrl)
+            type = "image/*"
+        }
+        context?.startActivity(
+            Intent.createChooser(
+                shareIntent,
+                "Share Photo"
+            )
+        )
+    }
+
+
 }

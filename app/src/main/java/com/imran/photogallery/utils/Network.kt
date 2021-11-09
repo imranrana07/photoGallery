@@ -19,7 +19,6 @@ val interceptor: Interceptor = Interceptor { chain ->
     chain.proceed(request)
 }
 
-val logger = HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
 class ApiException(message: String): IOException(message)
 
 fun isInternetAvailable(context: Context): Boolean {

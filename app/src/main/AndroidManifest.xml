@@ -13,7 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PhotoGallery"
         android:usesCleartextTraffic="true"
-        tools:targetApi="m">
+        tools:targetApi="m"
+        android:requestLegacyExternalStorage="true">
         <activity
             android:name="com.imran.photogallery.ui.home.MainActivity"
             android:exported="true">

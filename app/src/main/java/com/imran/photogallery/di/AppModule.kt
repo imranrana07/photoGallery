@@ -6,7 +6,6 @@ import com.google.gson.GsonBuilder
 import com.imran.photogallery.data.api.ApiCall
 import com.imran.photogallery.data.source.local.database.AppDatabase
 import com.imran.photogallery.data.source.local.database.dao.PhotoDao
-import com.imran.photogallery.utils.logger
 import com.qcoom.photogallery.BuildConfig
 import dagger.Module
 import dagger.Provides
@@ -15,7 +14,6 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
-import retrofit2.Converter
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
