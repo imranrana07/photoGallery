@@ -4,6 +4,7 @@ import androidx.paging.*
 import com.imran.photogallery.data.api.ApiCall
 import com.imran.photogallery.data.model.Photos
 import com.imran.photogallery.data.source.local.database.AppDatabase
+import com.imran.photogallery.data.source.remote.PhotosPagingSource
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
@@ -19,10 +20,11 @@ class PhotosRepository @Inject constructor(
                 pageSize = 1,
                 enablePlaceholders = false
             ),
-            remoteMediator = {
-                RemoteMediator(apiCall,clientId,db)
-            }
-        ).flow
+            remoteMediator = PhotosPagingSource(apiCall,clientId,db)
+
+        ){
+            db.photoDao().getPhotos()
+        }.flow
     }
 
 }

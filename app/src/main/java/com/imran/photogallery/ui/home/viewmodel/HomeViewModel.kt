@@ -21,6 +21,7 @@ import android.media.MediaScannerConnection.OnScanCompletedListener
 import android.os.Environment
 import androidx.core.content.ContextCompat.startActivity
 import androidx.lifecycle.asLiveData
+import androidx.paging.ExperimentalPagingApi
 import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
@@ -31,6 +32,7 @@ import java.net.URL
 @HiltViewModel
 class HomeViewModel @Inject constructor(private val photoRepository : PhotosRepository):ViewModel(){
 
+    @ExperimentalPagingApi
     fun getPhotos(clientId: String): Flow<PagingData<Photos>> {
         return photoRepository.getPhotos(clientId).cachedIn(viewModelScope)
     }

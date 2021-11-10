@@ -10,6 +10,7 @@ import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import androidx.paging.ExperimentalPagingApi
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.GridLayoutManager
 import com.imran.photogallery.core.ClickListener
@@ -40,12 +41,14 @@ class HomeFragment : Fragment(),ClickListener<PassData<Photos>> {
         return binding.root
     }
 
+    @ExperimentalPagingApi
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         init()
         listener()
     }
 
+    @ExperimentalPagingApi
     private fun listener() {
         binding.swipeRefreshLayout.setOnRefreshListener {
             init()
@@ -53,6 +56,7 @@ class HomeFragment : Fragment(),ClickListener<PassData<Photos>> {
     }
 
 
+    @ExperimentalPagingApi
     private fun init() {
         val adapter = PhotoAdapter(this)
         val layoutManager = GridLayoutManager(requireContext(),2)
