@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName
 
 data class Photos(
     @SerializedName("urls")
-    val urls: Urls,
+    val url: Urls,
     @SerializedName("id")
     val id: String
 

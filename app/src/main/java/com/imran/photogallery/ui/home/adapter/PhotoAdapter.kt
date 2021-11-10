@@ -22,7 +22,7 @@ class PhotoAdapter(private val clickedItem: ClickListener<PassData<Photos>>):Pag
 
     override fun onBindViewHolder(holder: PhotosViewHolder, position: Int) {
         val photos = getItem(position) as Photos
-        Glide.with(context).load(photos.urls.regular).placeholder(R.drawable.error).into(holder.ivPhoto)
+        Glide.with(context).load(photos.url.regular).placeholder(R.drawable.error).into(holder.ivPhoto)
 
         holder.ivPhoto.setOnClickListener {
             clickedItem.clickedData(PassData(PHOTO_DETAILS,photos))

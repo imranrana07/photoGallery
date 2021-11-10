@@ -20,7 +20,9 @@ import java.io.IOException
 import java.io.OutputStream
 import java.lang.Exception
 import java.net.URL
+import java.sql.Time
 import java.util.*
+import java.util.concurrent.TimeUnit
 
 fun Fragment.toast(message:String){
     Toast.makeText(context,message,Toast.LENGTH_LONG).show()
@@ -43,6 +45,7 @@ fun URL.toBitmap(): Bitmap?{
 }
 
 fun Fragment.saveImage(imageUrl: String){
+    
     try {
         val manager = requireActivity().getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
         val uri = Uri.parse(imageUrl)
@@ -50,11 +53,12 @@ fun Fragment.saveImage(imageUrl: String){
         request.setAllowedNetworkTypes(
             DownloadManager.Request.NETWORK_WIFI or DownloadManager.Request.NETWORK_MOBILE
         ).setAllowedOverRoaming(false)
-            .setTitle("Downloading_Image")
+            .setTitle("photo")
             .setMimeType("image/*")
             .setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
             .setDestinationInExternalFilesDir(
-                requireContext(), Environment.DIRECTORY_PICTURES,File.separator+"Test.jpeg"
+                requireContext(), "/${ Environment.DIRECTORY_PICTURES }/photo_gallery", //${ Environment.DIRECTORY_PICTURES }
+                "${Calendar.getInstance().timeInMillis}.jpeg"
             )
         manager.enqueue(request)
     }catch (e: Exception){
