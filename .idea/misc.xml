@@ -5,6 +5,7 @@
       <map>
         <entry key="app/src/main/res/drawable/bg_white_rounded_12.xml" value="0.25025641025641027" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.19444444444444445" />
+        <entry key="app/src/main/res/layout/fragment_single_photo.xml" value="0.20833333333333334" />
         <entry key="app/src/main/res/layout/item_photo.xml" value="0.19444444444444445" />
         <entry key="app/src/main/res/layout/item_shimmer.xml" value="0.22685185185185186" />
         <entry key="app/src/main/res/layout/shimmer_layout.xml" value="0.22685185185185186" />

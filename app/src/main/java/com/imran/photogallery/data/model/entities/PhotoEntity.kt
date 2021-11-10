@@ -4,7 +4,7 @@ import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 import java.io.Serializable
 
-@Entity(tableName = "photos")
+@Entity()
 data class PhotoEntity(
         @PrimaryKey
         var id:String,
